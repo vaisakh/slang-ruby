@@ -14,4 +14,12 @@ module Token
 	TOK_SEMI = 'TOK_SEMI' # ';'
 
 	TOK_NUMERIC = 'TOK_NUMERIC' # [0-9]+
+	TOK_VAR_NUMBER = 'TOK_VAR_NUMBER' # NUMBER data type
+	TOK_VAR_STRING = 'TOK_VAR_STRING' # STRING data type
+	TOK_VAR_BOOL = 'TOK_VAR_BOOL' # BOOL data type
+	TOK_COMMENT = 'TOK_COMMENT' # COMMENT Token
+	TOK_BOOL_TRUE ='TOK_BOOL_TRUE' # Boolean constant TRUE
+	TOK_BOOL_FALSE ='TOK_BOOL_FALSE' # Boolean constant false
+	TOK_STRING = 'TOK_STRING' # String literal
+	TOK_ASSIGN ='TOK_ASSIGN' # Assignment Symbol '='
 end

@@ -11,7 +11,7 @@ class PrintlineStatement < Statement
     @expression
   end
 
-  def accept visitor
-    visitor.visit(self)
+  def accept runtime_context, visitor
+    visitor.visit(runtime_context, self)
   end
 end

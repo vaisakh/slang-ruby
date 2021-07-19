@@ -1,30 +1,33 @@
 require_relative '../slang/interpreter/interpreter'
 require_relative '../slang/frontend/rd_parser'
+require_relative '../slang/contexts/compilation_context'
+require_relative '../slang/contexts/runtime_context'
 
 class Main
   def run
-    first()
-    second()
+    first('first.sl')
+    # second()
   end
 
-  def first
-    str = "PRINTLINE 2*10;" + "\r\n" + "PRINTLINE 10;\r\n PRINT 2*10;\r\n";
-    p = RDParser.new(str)
+  def first file_name
+    return if file_name == nil
+    # code = File.read(file_name)
+    code = "NUMERIC a; a=20; PRINTLINE a;"
+    
+    p = RDParser.new(code)
+    compilation_context = CompilationContext.new
+    statements = p.parse(compilation_context)
+    # puts statements
 
-    statements = p.parse()
+    runtime_context = RuntimeContext.new
+
     statements.each do |statement|
-      statement.accept(Interpreter.new)
+      puts statement.accept(runtime_context, Interpreter.new)
     end
+
   end
 
   def second
-    str = "PRINTLINE -2*10;" + "\r\n" + "PRINTLINE -10*-1;\r\n PRINT 2*10;\r\n";
-    p = RDParser.new(str)
-
-    statements = p.parse()
-    statements.each do |statement|
-      statement.accept(Interpreter.new)
-    end
   end
 end
 

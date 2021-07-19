@@ -1,0 +1,6 @@
+module Type
+  ILLEGAL = 'ILLEGAL'
+  NUMERIC = 'NUMERIC'
+  BOOLEAN = 'BOOLEAN'
+  STRING = 'STRING'
+end

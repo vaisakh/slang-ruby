@@ -1,6 +1,7 @@
 require_relative '../ast/visitor/visitor'
 
 class Interpreter < Visitor
+  
   def visit_NumericConstantExpression subject
     subject.value
   end
@@ -25,13 +26,33 @@ class Interpreter < Visitor
     end
   end
 
-  def visit_PrintlineStatement subject
-    value = subject.get_expression().accept(self)
+  def visit_PrintlineStatement runtime_context, subject
+    value = subject.get_expression().accept(runtime_context, self)
     puts value.to_s
   end
 
   def visit_PrintStatement subject
     value = subject.get_expression().accept(self)
     print value.to_s
+  end
+
+  def visit_BooleanConstantExpression subject
+    puts 'visit_BooleanConstantExpression'
+  end
+
+  def visit_VariableDeclarationStatement runtime_context, subject
+    puts 'visit_VariableDeclarationStatement'
+    # symbol_table = runtime_context.get_symbol_table()
+    # symbol_table.add_symbol(@symbol)
+    # @variable = VariableExpression.new(@symbol)
+    # return nil
+  end
+  
+  def visit_AssignmentStatement runtime_context, subject
+    puts 'visit_AssignmentStatement'
+  end
+
+  def visit_VariableExpression runtime_context, subject
+    puts 'visit_VariableExpression'
   end
 end

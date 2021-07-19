@@ -1,19 +1,15 @@
-require_relative 'expression'
+require_relative './expression'
 require_relative '../../contexts/symbol'
 require_relative '../meta/type'
 
-class NumericConstantExpression < Expression
-  attr_reader :value
+class StringLiteralExpression
   attr_reader :symbol
 
-
   def initialize(value)
-    # @value = value # needs this?
-
-    @symbol = TSymbol.new
+    @symbol = Symbol.new
     @symbol.name = nil
-    @symbol.double_value = value
-    @symbol.type = Type::NUMERIC
+    @symbol.string_value = value
+    @symbol.type = Type::STRING
   end
 
   def evaluate(runtime_context)
