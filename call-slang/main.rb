@@ -5,14 +5,13 @@ require_relative '../slang/contexts/runtime_context'
 
 class Main
   def run
-    first('first.sl')
+    first('./sample-scripts/first.sl')
     # second()
   end
 
   def first file_name
     return if file_name == nil
-    # code = File.read(file_name)
-    code = "NUMERIC a; a=20; PRINTLINE a;"
+    code = File.read(file_name)
     
     p = RDParser.new(code)
     compilation_context = CompilationContext.new
